@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import statistics
+import numpy as np
 USAGE_MESSAGE = "Usage: ./averages.py [ARG] {seperates numbers}. Where --mode is either --mean, --median or --mode [LIST OF NUMBERS CANNOT BE LONGER THAN 8]"
 USAGE_MESSAGE2 = "e.g ./averages.py --mean 1 2 3"
 def print_usage():
