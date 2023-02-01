@@ -16,7 +16,10 @@ print("Hello World!")
 
 # mkdir (This is how we make a directory)
 # cd (This is how we change directories)
+
 # ls (This is how we list the contents of a directory)
+# In CMD this command is replaced with dir (ls is unix)
+
 # pwd (This is how we print the working directory)
 # touch (This is how we create a file)
 # rm (This is how we remove a file)
