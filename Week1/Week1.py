@@ -19,6 +19,7 @@ print("Hello World!")
 
 # ls (This is how we list the contents of a directory)
 # In CMD this command is replaced with dir (ls is unix)
+#Pretty much everything we do is in cmd so if you have any struggles just open a bash terminal and go from there
 
 # pwd (This is how we print the working directory)
 # touch (This is how we create a file)
