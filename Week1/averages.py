@@ -2,8 +2,8 @@
 import sys
 import statistics
 import numpy as np
-USAGE_MESSAGE = "Usage: ./averages.py [ARG] {seperates numbers}. Where --mode is either --mean, --median or --mode [LIST OF NUMBERS CANNOT BE LONGER THAN 8]"
-USAGE_MESSAGE2 = "e.g ./averages.py --mean 1 2 3"
+USAGE_MESSAGE = "Usage: ./averages.py {seperates numbers} [ARG]. Where [ARG]] is either --mean, --median or --mode [LIST OF NUMBERS CANNOT BE LONGER THAN 8]"
+USAGE_MESSAGE2 = "e.g ./averages.py 1 2 3 --mean"
 def print_usage():
     print(USAGE_MESSAGE)
     print(USAGE_MESSAGE2)
@@ -11,7 +11,7 @@ def print_usage():
 
 def main(input:list):
     argument = sys.argv[-1]
-    numbers = sys.argv[1:-2]
+    numbers = sys.argv[1:-1]
     for i in range(len(numbers)):
         numbers[i] = int(numbers[i])
     if len(sys.argv) > 8:
