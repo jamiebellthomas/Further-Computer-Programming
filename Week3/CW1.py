@@ -102,9 +102,6 @@ def check_solution(grid):
 	n = grid[1]
 	m = grid[2]
 	grid = grid[0] 
-	print(grid)
-	print(n)
-	print(m)
 	test_row = False
 	test_col = False
 	test_box = False
