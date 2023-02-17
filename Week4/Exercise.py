@@ -27,7 +27,7 @@ for case in test_cases:
 
     
 #Exercise 3: Read in a list of grades from grades.txt and print out the average grade.
-
+"""
 def average_grade():
     file = open('grades.txt', 'r')
     grades = file.readlines()
@@ -47,5 +47,66 @@ def average_grade():
     print(grades)
     file.close()
 
+"""
+# Now funcitonality has been established, let's write it as sub-functions with exceptions
+def read_grades():
+    # Raise an exception if the file is not found
+    try:
+        file = open('grades.txt', 'r')
+    except FileNotFoundError:
+        raise FileNotFoundError('File not found')
+    else:
+        grades = file.readlines()
+        file.close()
 
-average_grade()
+        return grades
+
+def convert_grades(grades):
+    #remove the new line character
+    grades = [grade.strip() for grade in grades]
+
+    #convert each string in grades list to a list of integers using ord()
+    grades = [[ord(char.lower())-96 for char in grade] for grade in grades]
+    
+
+    # Remove all -64 values from all lists
+    grades = [[char for char in grade if char != -64] for grade in grades]
+    # Raise exception if any grade is not a letter
+    for grade in grades:
+        for char in grade:
+            if char < 1 or char > 26:
+                raise ValueError('Grades must be letters')
+    return grades
+
+def average_grades(grades):
+    #Average each list
+    try:
+        grades = [sum(grade)/len(grade) for grade in grades]
+    except ZeroDivisionError:
+        print('Division by zero')
+    else:
+    # Round it to nearest whole number
+        grades = [round(grade) for grade in grades]
+    # Convert each number to a letter
+        grades = [chr(grade+96) for grade in grades]
+    return grades
+
+
+def main():
+    grades = read_grades()
+    try:
+        grades = convert_grades(grades)
+    except ValueError as error:
+        print(error)
+    else:
+        try:
+            grades = average_grades(grades)
+        except ZeroDivisionError:
+            print('Division by zero')
+        else:
+            print(grades)
+
+
+if __name__ == '__main__':
+    main()
+
