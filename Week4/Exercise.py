@@ -26,4 +26,26 @@ for case in test_cases:
         print('No exception raised')
 
     
+#Exercise 3: Read in a list of grades from grades.txt and print out the average grade.
 
+def average_grade():
+    file = open('grades.txt', 'r')
+    grades = file.readlines()
+    #remove the new line character
+    grades = [grade.strip() for grade in grades]
+
+    #convert each string in grades list to a list of integers using ord()
+    grades = [[ord(char)-96 for char in grade] for grade in grades]
+    # Remove all -64 values from all lists
+    grades = [[char for char in grade if char != -64] for grade in grades]
+    #Average each list
+    grades = [sum(grade)/len(grade) for grade in grades]
+    # Round it to nearest whole number
+    grades = [round(grade) for grade in grades]
+    # Convert each number to a letter
+    grades = [chr(grade+96) for grade in grades]
+    print(grades)
+    file.close()
+
+
+average_grade()
