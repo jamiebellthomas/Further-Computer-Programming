@@ -7,6 +7,12 @@
 #n is negative or zero.
 
 def nth_root(x, n):
+    """
+    Calculates the nth root of a number x
+    x: number to find the root of
+    n: degree of the root
+    returns: nth root of x
+    """
     if x < 0:
         raise ValueError('x cannot be negative')
     if n <= 0:
@@ -50,6 +56,10 @@ def average_grade():
 """
 # Now funcitonality has been established, let's write it as sub-functions with exceptions
 def read_grades():
+    """
+    Reads in a list of grades from grades.txt and returns it as a list
+    returns: list of grades
+    """
     # Raise an exception if the file is not found
     try:
         file = open('grades.txt', 'r')
@@ -62,6 +72,11 @@ def read_grades():
         return grades
 
 def convert_grades(grades):
+    """
+    Converts a list of grades to a list of lists of integers
+    grades: list of grades (strings)
+    returns: list of lists of integers
+    """
     #remove the new line character
     grades = [grade.strip() for grade in grades]
 
@@ -79,6 +94,11 @@ def convert_grades(grades):
     return grades
 
 def average_grades(grades):
+    """
+    Averages a list of grades
+    grades: list of grades (lists of integers)
+    returns: individual average grades (strings)
+    """
     #Average each list
     try:
         grades = [sum(grade)/len(grade) for grade in grades]
