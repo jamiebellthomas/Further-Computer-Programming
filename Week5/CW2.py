@@ -157,9 +157,10 @@ def recursive_solve(grid, n_rows, n_cols):
 	# Replace all 0's with a list of all remaining possible values
 	n = n_rows*n_cols
 	solved = False
-	while solved == False:
+	it = 0
+	while solved == False and it < 10:
 		remaining = 0
-		it = 0
+		
 		for i in range(len(grid)):
 			for j in range(len(grid[i])):
 				possible_values = possible_values_combined(grid, n_rows, n_cols, i, j)
@@ -167,17 +168,21 @@ def recursive_solve(grid, n_rows, n_cols):
 					continue
 				elif len(possible_values) == 1:
 					grid[i][j] = possible_values[0]
+				else:
+					grid[i][j] = possible_values
+					remaining += 1
 		# reset all lists to 0
 		for i in range(len(grid)):
 			for j in range(len(grid[i])):
-				if (grid[i][j]) == 0:
-					remaining += 1
+				if type(grid[i][j]) == list:
+					grid[i][j] = 0
 		it += 1
 		if remaining == 0:
 			solved = True
-		if it > 5:
+			return grid
+		elif it == 10:
 			print("Too many iterations")
-			break
+			return False
 		
 
 				
@@ -192,7 +197,12 @@ def recursive_solve(grid, n_rows, n_cols):
 
 def random_solve(grid, n_rows, n_cols, max_tries=500):
 
-	for i in range(max_tries):
+	for _ in range(max_tries):
+		# Find a random cell that is not yet filled
+		# If all cells are filled, return the grid
+		# Otherwise, choose a random value from the list of possible values
+		# and assign it to the cell
+		
 		pass
 
 	return grid
