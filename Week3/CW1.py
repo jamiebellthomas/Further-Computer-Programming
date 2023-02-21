@@ -142,6 +142,7 @@ def check_solution(grid):
 				for l in range(m):
 					box.append(grid[i+k][j+l])
 			grid_box.append(box)
+	print(grid_box)
 	# Check if the boxes are correct
 	for i in grid_box:
 		if sorted(i) == range_list:
