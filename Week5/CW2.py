@@ -41,7 +41,7 @@ grid6 = [
 		[0, 0, 1, 0, 0, 0],
 		[0, 5, 0, 0, 6, 4]]
 
-grids = [(grid1, 2, 2), (grid2, 2, 2), (grid3, 2, 2), (grid4, 2, 2), (grid5, 2, 2)]
+grids = [(grid1, 2, 2), (grid2, 2, 2), (grid3, 2, 2), (grid4, 2, 2), (grid5, 2, 2), (grid6, 2, 3)]
 '''
 ===================================
 DO NOT CHANGE CODE ABOVE THIS LINE
@@ -123,10 +123,8 @@ def possible_values_square(grid, n_rows, n_cols, row, column):
 	squares = get_squares(grid, n_rows, n_cols)
 	if grid[row][column] == 0:
 		# Find the square that the cell is in
-		for i in range(len(squares)):
-			if row in range(n_rows*(i//n_rows), n_rows*(i//n_rows)+n_rows) and column in range(n_cols*(i%n_cols), n_cols*(i%n_cols)+n_cols):
-				square = squares[i]
-				break
+		index = (row//n_rows)*n_rows + column//n_cols
+		square = squares[index]
 		for i in square:
 			if i in possible_values:
 				possible_values.remove(i)
@@ -248,6 +246,7 @@ def main():
 	print("====================================")
 	
 	for (i, (grid, n_rows, n_cols)) in enumerate(grids):
+		print(grid)
 		print("Solving grid: %d" % (i+1))
 		start_time = time.time()
 		solution = solve(grid, n_rows, n_cols)
